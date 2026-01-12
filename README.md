@@ -20,7 +20,7 @@ Git is required to clone the project repository from GitHub.
 
 6. Clone Project Repository 
 Command: 
-git clone https://github.com/ramyachetty/web-app.git
+git clone https://github.com/shivanibarya/Docker-Multi-Stage-Deployment-Using-Tomcat.git
 <img width="916" height="416" alt="image" src="https://github.com/user-attachments/assets/3f81a750-567c-4a70-a923-1e500edf5903" />
 Purpose: 
 This downloads the project source code into the EC2 instance. 
