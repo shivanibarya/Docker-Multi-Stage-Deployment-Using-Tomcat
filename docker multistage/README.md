@@ -1,132 +1,64 @@
-📌 Project Title
+1.	Introduction
+This document explains the complete process of deploying a Java Web Application using Docker and Tomcat. It covers required commands, their purpose, and why each step is used. This approach uses a multi-stage Docker build to optimize image size and performance.
+2. Prerequisites 
+• Amazon EC2 (Amazon Linux 2023) 
+• Docker Installed 
+• Git Installed 
+• Java-based Web Application (Maven project) 
+• Internet Access 
+3. Install Git 
+Command: 
+sudo yum install git -y
+<img width="916" height="469" alt="image" src="https://github.com/user-attachments/assets/300c8ca5-de3d-4327-b081-a1b8859eddf8" />
+Purpose: 
+Git is required to clone the project repository from GitHub. 
+5. Clone Project Repository 
+Command: 
+git clone https://github.com/ramyachetty/web-app.git
+<img width="916" height="416" alt="image" src="https://github.com/user-attachments/assets/3f81a750-567c-4a70-a923-1e500edf5903" />
+Purpose: 
+This downloads the project source code into the EC2 instance. 
+7. Navigate into Project Directory 
+Command: 
+cd web-app
+<img width="916" height="438" alt="image" src="https://github.com/user-attachments/assets/4404593c-1fdc-4037-9db4-a50daeaa46ba" />
 
-CI/CD Pipeline for Java Web Application using Jenkins, Maven & Docker
+Purpose: 
+Access project files such as Dockerfile, pom.xml, and source code. 
+9. Dockerfile (Multi-Stage Build Explanation) 
+Stage 1 (Build Stage) 
+10. Build Docker Image 
+Command: 
+docker build -t webapp . 
+<img width="916" height="455" alt="image" src="https://github.com/user-attachments/assets/75b1a7e2-3211-4562-94dc-91080da6254c" />
 
-📖 Project Description
+Purpose: 
+Creates a Docker image using instructions defined in Dockerfile. 
+11. Run Docker Container 
+Command: 
+docker run -d -p 80:8080 --name webapp webapp 
+<img width="916" height="438" alt="image" src="https://github.com/user-attachments/assets/ac168fa8-5d5e-4da4-9d4e-afdf2e494b4b" />
 
-This project demonstrates a complete CI/CD pipeline implementation for a Java-based web application.
-The pipeline automates the process of code cloning, building, Docker image creation, pushing to Docker Hub, and container deployment using Jenkins.
-
-The project is deployed on an AWS EC2 instance with Jenkins, Docker, Maven, Git, and Java 17 installed.
-
-🛠️ Tools & Technologies Used
-
-AWS EC2 – Virtual server
-
-Jenkins – CI/CD automation
-
-Docker – Containerization
-
-Docker Hub – Image repository
-
-Maven – Build automation
-
-Git & GitHub – Version control
-
-Java 17 (Amazon Corretto) – Application runtime
-
-Linux (Amazon Linux 2023)
-
-🔄 CI/CD Pipeline Workflow
-
-Clone Code from GitHub repository
-
-Build Application using Maven
-
-Create Docker Image
-
-Push Docker Image to Docker Hub
-
-Deploy Application using Docker container
-
-🧩 Jenkins Pipeline Stages.
-
-Clone Code
-<img width="1920" height="1080" alt="Screenshot (673)" src="https://github.com/user-attachments/assets/3abddda0-3411-47bb-9f49-572c125c1df4" />
-Build Code
-
-Docker Image Build
-<img width="1920" height="1080" alt="Screenshot (674)" src="https://github.com/user-attachments/assets/9fd56989-81cf-407d-b481-faf92e79fe3d" />
-
-Docker Image Push
-
-Deploy Container
-<img width="1920" height="1080" alt="Screenshot (675)" src="https://github.com/user-attachments/assets/57089124-09f3-443f-a0bc-aed3539ec70d" />
-
-🚀 How to Run the Project
-
-Launch an AWS EC2 instance
-
-Install:
-
-Java 17
-
-Jenkins
-
-Maven
-
-Git
-
-Docker
-
-Start Jenkins and configure required plugins
-
-Add Docker Hub credentials in Jenkins
-
-Create a Pipeline job
-
-Add the provided Jenkinsfile
-
-Run the pipeline
-
-<img width="1920" height="1080" alt="Screenshot (676)" src="https://github.com/user-attachments/assets/d683e69a-cebc-4d29-b611-907765c0163e" />
-
-🐳 Docker Image
-
-Docker Hub Repo: shivanibarya/webapp
-<img width="1920" height="1080" alt="Screenshot (677)" src="https://github.com/user-attachments/assets/a52125bb-3256-4bed-ac3a-05227b6feed0" />
-Tag: latest
-
-📂 Repository Structure
-.
-├── src/
-
-├── pom.xml
-
-├── Dockerfile
-
-├── Jenkinsfile
-
-└── README.md
-
-✅ Key Features
-
-Fully automated CI/CD pipeline
-
-Dockerized Java web application
-
-Secure Docker Hub authentication
-
-Zero manual deployment steps
-
-Scalable and production-ready approach
-
-🎯 Learning Outcomes
-
-Practical CI/CD implementation
-
-Jenkins declarative pipelines
-
-Docker image lifecycle management
-
-AWS EC2 server setup
-
-DevOps automation best practices
-
-👩‍💻 Author
-
-Shivani Barya
-MCA (Cloud Computing)
-DevOps & Cloud Enthusiast
-
-🔗 GitHub: https://github.com/shivanibarya
+Purpose: 
+Runs the application container and maps port 8080 inside container to port 80 on host. 
+12. Verify Running Container 
+Command: 
+docker ps 
+Purpose: 
+Checks whether the container is running successfully. 
+13. Access Application 
+URL: 
+http://ip -address 
+Purpose: 
+Opens deployed Java web application in browser. 
+<img width="916" height="406" alt="image" src="https://github.com/user-attachments/assets/314b6546-7a3b-4091-be7b-cd312142e939" />
+14. Logs Verification 
+Command: 
+docker logs webapp 
+<img width="916" height="450" alt="image" src="https://github.com/user-attachments/assets/2446c569-8fc7-4194-96da-a4b1e268e5ea" />
+Purpose: 
+Used for debugging and verifying application startup logs. 
+15. Conclusion 
+This deployment uses Docker multi-stage builds for optimized performance, ensures clean 
+separation of build and runtime environments, and enables scalable deployment using 
+containers.
